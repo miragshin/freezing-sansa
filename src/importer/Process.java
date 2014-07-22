@@ -5,7 +5,7 @@
  */
 package importer;
 
-import importer.Patterns;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -28,10 +28,6 @@ public class Process {
         List<String> line = FileUtils.readLines(file);
         Pattern pattern = Pattern.compile("[-+]?[0-9]*\\.?[0-9]+");
         int count = 0;
-        String mebleg;
-        String krSayi;
-        String krTesh;
-
         for (String word : line) {
             Matcher matcher = pattern.matcher(word);
             word = word.toUpperCase();
@@ -58,44 +54,27 @@ public class Process {
                 count++;
 
             } else if (word.contains("KREDITLƏR ÜZRƏ")) {
-                System.out.println("hello");
-
                 while (matcher.find()) {
                     System.out.println(matcher.group());
                 }
 
             } else if (word.contains("KREDIT XƏTLƏRI")) {
-               // mebleg = word.substring(41, 45);
-               // krSayi = word.substring(48, 49);
-              //  krTesh = word.substring(54, 55);
-              //  System.out.println(mebleg);
-              //  System.out.println(krSayi);
-               // System.out.println(krTesh);
-
-            } else if (word.contains("CƏMI AYLIQ ÖDƏNIŞ")) {
-                mebleg = word.substring(35, 39);
-                krSayi = word.substring(42, 43);
-                krTesh = word.substring(48, 49);
-                System.out.println(mebleg);
-                System.out.println(krSayi);
-                System.out.println(krTesh);
-
-            } else if (word.contains("KREDIT + KREDIT") && count == 1) {
-
                 while (matcher.find()) {
-
                     System.out.println(matcher.group());
                 }
-
+            } else if (word.contains("QARANTIYA ÜZRƏ")) {
+                while (matcher.find()) {
+                    System.out.println(matcher.group());
+                }
+            } else if (word.contains("CƏMI AYLIQ")) {
+                while (matcher.find()) {
+                    System.out.println(matcher.group());
+                }
+            } else if (word.contains(("KREDIT + KREDIT")) && count == 1) {
+                while (matcher.find()) {
+                    System.out.println(matcher.group());
+                }
             }
-
-            /*  if (count == template.temp.length) {
-             break;
-             } else {
-                
-             }*/
-            //  } else {
-            // System.out.println("OOPS");
         }
     }
 }
